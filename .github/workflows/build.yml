@@ -1,0 +1,48 @@
+name: Build recovered code
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  VERSION: 0.36.5552
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate generator
+        run: python -m unittest discover -s tests -p 'test_*.py'
+      - name: Build and test recovered code
+        run: python build.py
+      - name: Install objdiff-cli
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force .tools | Out-Null
+          Invoke-WebRequest https://github.com/encounter/objdiff/releases/download/v3.8.3/objdiff-cli-windows-x86_64.exe -OutFile .tools/objdiff-cli.exe
+          $hash = (Get-FileHash .tools/objdiff-cli.exe -Algorithm SHA256).Hash.ToLowerInvariant()
+          if ($hash -ne 'dd12dfb5e9e94a7f6c949a37e1815963cf2cffe4c87b4999b7ebc8c15b398a1f') { throw 'objdiff checksum mismatch' }
+      - name: Generate progress report
+        run: ./.tools/objdiff-cli.exe report generate -o build/${{ env.VERSION }}/report.json
+      - name: Verify original bytes and report scope
+        id: progress
+        run: python tools/check_report.py --github-output "$env:GITHUB_OUTPUT"
+      - name: Upload report
+        uses: actions/upload-artifact@v4
+        with:
+          # A partial baseline is deliberately named VERSION_research.
+          # check_report.py selects VERSION_report once a whole-game baseline exists.
+          name: ${{ steps.progress.outputs.artifact_name }}
+          path: |
+            build/${{ env.VERSION }}/report.json
+            build/${{ env.VERSION }}/scope.json
+          if-no-files-found: error

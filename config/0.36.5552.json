@@ -1,0 +1,108 @@
+{
+  "version": "0.36.5552",
+  "version_basis": "User-provided version label; executable fingerprint is authoritative.",
+  "steam_app_id": 2009350,
+  "steam_build_id": "25808949",
+  "engine": "Unreal Engine 4.27",
+  "engine_build_string": "++UE4+Release-4.27-CL-18319896",
+  "executable": "OutOfOre/Binaries/Win64/OutOfOre-Win64-Shipping.exe",
+  "executable_sha256": "7fe80b871f0f4c2572ea82bd1aca01a8fcd5ce404d4d3bae0c291cdb3a198a76",
+  "executable_size": 103463216,
+  "image_base": "0x140000000",
+  "scope": "Four recovered money setters only; not a whole-game progress baseline.",
+  "bytematch_ready": false,
+  "units": [
+    {
+      "name": "game/economy/SetRewardMoney",
+      "source_path": "src/game/economy/SetRewardMoney.cpp",
+      "target_source": "asm/0.36.5552/game/economy/SetRewardMoney.asm",
+      "rva": "0x1e33490",
+      "size": 4,
+      "code_sha256": "fffa5f88686843b1cc904a5957e78ed9541775eb69ea5b7a6fcf54fc4cc97ba4",
+      "matched": true,
+      "linked_from_source": false
+    },
+    {
+      "name": "game/economy/SetPersonalMoney",
+      "source_path": "src/game/economy/SetPersonalMoney.cpp",
+      "target_source": "asm/0.36.5552/game/economy/SetPersonalMoney.asm",
+      "rva": "0x1e33030",
+      "size": 7,
+      "code_sha256": "5dba718dec355e36bf05060f2b37416aabe8679fa63a874f22f013c7e310449d",
+      "matched": true,
+      "linked_from_source": false
+    },
+    {
+      "name": "game/economy/SetSuperGameMoney",
+      "source_path": "src/game/economy/SetSuperGameMoney.cpp",
+      "target_source": "asm/0.36.5552/game/economy/SetSuperGameMoney.asm",
+      "rva": "0x1e33610",
+      "size": 8,
+      "code_sha256": "e1beb1f7e33ad0928b884849f2a9459cbb64c3b92f3f3c835f9240ba49b429a4",
+      "matched": true,
+      "linked_from_source": false
+    },
+    {
+      "name": "game/economy/SetSuperCompanyMoney",
+      "source_path": "src/game/economy/SetSuperCompanyMoney.cpp",
+      "target_source": "asm/0.36.5552/game/economy/SetSuperCompanyMoney.asm",
+      "rva": "0x1df6df0",
+      "size": 8,
+      "code_sha256": "724a677cc944845d2560e18d96444a20acfde521b1730f1d957ed1f07c6e3192",
+      "matched": true,
+      "linked_from_source": false
+    }
+  ],
+  "analysis_functions": [
+    {
+      "name": "SetRewardMoney",
+      "rva": "0x1e33490",
+      "size": 4
+    },
+    {
+      "name": "execSetRewardMoney",
+      "rva": "0x1ecc5e0",
+      "size": 131
+    },
+    {
+      "name": "SetPersonalMoney",
+      "rva": "0x1e33030",
+      "size": 7
+    },
+    {
+      "name": "execSetPersonalMoney",
+      "rva": "0x1ec4f20",
+      "size": 131
+    },
+    {
+      "name": "SetSuperGameMoney",
+      "rva": "0x1e33610",
+      "size": 8
+    },
+    {
+      "name": "execSetSuperGameMoney",
+      "rva": "0x1ea0e40",
+      "size": 133
+    },
+    {
+      "name": "SetSuperCompanyMoney",
+      "rva": "0x1df6df0",
+      "size": 8
+    },
+    {
+      "name": "execSetSuperCompanyMoney",
+      "rva": "0x1ea0db0",
+      "size": 133
+    },
+    {
+      "name": "SetMaxFuelAmount",
+      "rva": "0x1e32e80",
+      "size": 18
+    },
+    {
+      "name": "execSetMaxFuelAmount",
+      "rva": "0x1eb3a20",
+      "size": 128
+    }
+  ]
+}

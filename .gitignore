@@ -1,0 +1,17 @@
+/build/
+/orig/
+/objdiff.json
+/.venv/
+/.tools/
+__pycache__/
+*.pyc
+*.exe
+*.dll
+*.pdb
+*.pak
+*.sig
+*.obj
+*.o
+*.bin
+*.gpr
+*.rep/

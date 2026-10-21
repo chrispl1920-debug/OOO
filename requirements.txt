@@ -1,0 +1,2 @@
+# Only the optional binary inspection / code capture tools need this package.
+pefile==2024.8.26
